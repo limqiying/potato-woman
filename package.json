@@ -1,0 +1,27 @@
+{
+  "name": "potato-woman",
+  "version": "1.0.0",
+  "description": "An interactive 3D character using Three.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limqiying/potato-woman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limqiying/potato-woman/issues"
+  },
+  "homepage": "https://github.com/limqiying/potato-woman#readme",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "three": "^0.110.0"
+  }
+}
