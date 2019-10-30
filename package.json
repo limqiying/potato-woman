@@ -4,7 +4,8 @@
   "description": "An interactive 3D character using Three.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/limqiying/potato-woman#readme",
   "devDependencies": {
+    "eslint-loader": "^3.0.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
   },
