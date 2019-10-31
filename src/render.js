@@ -51,7 +51,14 @@ export function init() {
         (gltf) => {
             model = gltf.scene;
             let fileAnimations = gltf.animations;
-
+            model.traverse(o => {
+                if (o.isMesh) {
+                    o.castShadow = true;
+                    o.receiveShadow = true;
+                }
+            });
+            model.position.y = -11;
+            model.scale.set(0.05, 0.05, 0.05);
             scene.add(model);
         },
         undefined, // We don't need this function
@@ -59,6 +66,17 @@ export function init() {
             console.error(error);
         }
     );
+
+    let geometry = new THREE.SphereGeometry(5, 32, 32);
+    let material = new THREE.MeshBasicMaterial({
+        color: 0x9bffaf
+    }); // 0xf2ce2e 
+    let sphere = new THREE.Mesh(geometry, material);
+    sphere.position.z = -15;
+    sphere.position.y = -4.5;
+    sphere.position.x = -0.25;
+    scene.add(sphere);
+
 
     // Add lights
     let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.61);
