@@ -16,7 +16,8 @@ let scene,
 
 export {
     neck,
-    waist
+    waist,
+    renderer
 };
 
 export function init() {
@@ -34,6 +35,7 @@ export function init() {
         canvas,
         antialias: true
     });
+    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.gammaFactor = 1.7;
@@ -72,7 +74,7 @@ export function init() {
                 }
             });
             model.position.y = -11;
-            model.scale.set(50, 50, 50);
+            model.scale.set(80, 80, 80);
             scene.add(model);
 
             mixer = new THREE.AnimationMixer(model);
@@ -94,7 +96,7 @@ export function init() {
     }); // 0xf2ce2e 
     let sphere = new THREE.Mesh(geometry, material);
     sphere.position.z = -15;
-    sphere.position.y = -4.5;
+    sphere.position.y = -1.5;
     sphere.position.x = -0.25;
     scene.add(sphere);
 
@@ -139,30 +141,24 @@ export function update() {
         mixer.update(clock.getDelta());
     }
 
-    if (resizeRendererToDisplaySize(renderer)) {
-        const canvas = renderer.domElement;
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-    }
-
     renderer.render(scene, camera);
     requestAnimationFrame(update);
 }
 
-export function resizeRendererToDisplaySize(renderer) {
-    const canvas = renderer.domElement;
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let canvasPixelWidth = canvas.width / window.devicePixelRatio;
-    let canvasPixelHeight = canvas.height / window.devicePixelRatio;
+// export function resizeRendererToDisplaySize(renderer) {
+//     const canvas = renderer.domElement;
+//     let width = window.innerWidth;
+//     let height = window.innerHeight;
+//     let canvasPixelWidth = canvas.width / window.devicePixelRatio;
+//     let canvasPixelHeight = canvas.height / window.devicePixelRatio;
 
-    const needResize =
-        canvasPixelWidth !== width || canvasPixelHeight !== height;
-    if (needResize) {
-        renderer.setSize(width, height, false);
-    }
-    return needResize;
-}
+//     const needResize =
+//         canvasPixelWidth !== width || canvasPixelHeight !== height;
+//     if (needResize) {
+//         renderer.setSize(width, height, false);
+//     }
+//     return needResize;
+// }
 
 export function moveJoint(mouse, joint, degreeLimit) {
     let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit);

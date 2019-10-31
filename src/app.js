@@ -5,7 +5,8 @@ import {
     moveJoint,
     getMousePos,
     waist,
-    neck
+    neck,
+    renderer
 } from './render';
 
 document.body.appendChild(component());
@@ -19,4 +20,8 @@ document.addEventListener('mousemove', function (e) {
         moveJoint(mousecoords, neck, 50);
         moveJoint(mousecoords, waist, 30);
     }
+});
+
+window.addEventListener('resize', function () {
+    renderer.setSize(window.innerWidth, window.innerHeight);
 });
