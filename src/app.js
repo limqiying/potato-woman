@@ -6,7 +6,8 @@ import {
     getMousePos,
     waist,
     neck,
-    renderer
+    renderer,
+    setLeftOrRight
 } from './render';
 
 document.body.appendChild(component());
@@ -21,6 +22,15 @@ document.addEventListener('mousemove', function (e) {
         moveJoint(mousecoords, waist, 30);
     }
 });
+
+document.addEventListener('mousedown', e => {
+    var mousecoords = getMousePos(e);
+    setLeftOrRight(mousecoords.x);
+});
+
+document.addEventListener('mouseup', _ => {
+    setLeftOrRight(-1.0);
+})
 
 window.addEventListener('resize', function () {
     renderer.setSize(window.innerWidth, window.innerHeight);

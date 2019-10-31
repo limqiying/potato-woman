@@ -12,8 +12,8 @@ let scene,
     possibleAnims, // Animations found in our file
     mixer, // THREE.js animations mixer
     idle, // Idle, the default state our character returns to
-    clock = new THREE.Clock();
-
+    clock = new THREE.Clock(),
+    leftOrRight = 0;
 export {
     neck,
     waist,
@@ -80,7 +80,6 @@ export function init() {
             mixer = new THREE.AnimationMixer(model);
             let idleAnim = fileAnimations[0];
             idleAnim.tracks.splice(3, 12);
-            console.log(idleAnim.tracks);
             idle = mixer.clipAction(idleAnim);
             idle.play();
         },
@@ -107,7 +106,7 @@ export function init() {
     // Add hemisphere light to scene
     scene.add(hemiLight);
 
-    let d = 8.25;
+    let d = 50.0;
     let dirLight = new THREE.DirectionalLight(0xffffff, 0.54);
     dirLight.position.set(-8, 12, 8);
     dirLight.castShadow = true;
@@ -140,7 +139,7 @@ export function update() {
     if (mixer) {
         mixer.update(clock.getDelta());
     }
-
+    walkGigi();
     renderer.render(scene, camera);
     requestAnimationFrame(update);
 }
@@ -156,6 +155,25 @@ export function getMousePos(e) {
         x: e.clientX,
         y: e.clientY
     };
+}
+
+export function setLeftOrRight(x) {
+    const w = window.innerWidth;
+    let direction = "None";
+    if (x < 0) {
+        leftOrRight = 0;
+    } else if (x <= w / 2) {
+        direction = "left";
+    } else if (x >= w / 2) {
+        direction = "right";
+    }
+    leftOrRight = direction == "left" ? -1 : direction == "right" ? 1 : 0;
+}
+
+function walkGigi() {
+    if (model) {
+        model.position.x += leftOrRight * 0.1;
+    }
 }
 
 function getMouseDegrees(x, y, degreeLimit) {
