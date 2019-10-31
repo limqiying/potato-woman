@@ -31,6 +31,8 @@ export function init() {
     });
     renderer.shadowMap.enabled = true;
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.gammaFactor = 1.7;
+    renderer.gammaOutput = true;
     document.body.appendChild(renderer.domElement);
 
     // Add a camera
