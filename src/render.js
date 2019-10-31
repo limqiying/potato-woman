@@ -77,7 +77,8 @@ export function init() {
 
             mixer = new THREE.AnimationMixer(model);
             let idleAnim = fileAnimations[0];
-            idleAnim.tracks.splice(2, 9);
+            idleAnim.tracks.splice(3, 12);
+            console.log(idleAnim.tracks);
             idle = mixer.clipAction(idleAnim);
             idle.play();
         },
