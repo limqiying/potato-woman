@@ -90,13 +90,13 @@ export function init() {
         }
     );
 
-    let geometry = new THREE.SphereGeometry(5, 32, 32);
+    let geometry = new THREE.SphereGeometry(7, 32, 32);
     let material = new THREE.MeshBasicMaterial({
         color: "#3ffcc7"
     }); // 0xf2ce2e 
     let sphere = new THREE.Mesh(geometry, material);
     sphere.position.z = -15;
-    sphere.position.y = -1.5;
+    sphere.position.y = 0;
     sphere.position.x = -0.25;
     scene.add(sphere);
 
