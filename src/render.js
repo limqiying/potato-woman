@@ -20,7 +20,7 @@ export {
 };
 
 export function init() {
-    const MODEL_PATH = './assets/gigi.glb';
+    const MODEL_PATH = './assets/gigiGLTF.glb';
 
     const canvas = document.querySelector('#c');
     const backgroundColor = 0xf1f1f1;
@@ -72,12 +72,12 @@ export function init() {
                 }
             });
             model.position.y = -11;
-            model.scale.set(0.05, 0.05, 0.05);
+            model.scale.set(50, 50, 50);
             scene.add(model);
 
             mixer = new THREE.AnimationMixer(model);
             let idleAnim = fileAnimations[0];
-            idleAnim.tracks.splice(2, 4);
+            idleAnim.tracks.splice(2, 9);
             idle = mixer.clipAction(idleAnim);
             idle.play();
         },
