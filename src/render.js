@@ -145,21 +145,6 @@ export function update() {
     requestAnimationFrame(update);
 }
 
-// export function resizeRendererToDisplaySize(renderer) {
-//     const canvas = renderer.domElement;
-//     let width = window.innerWidth;
-//     let height = window.innerHeight;
-//     let canvasPixelWidth = canvas.width / window.devicePixelRatio;
-//     let canvasPixelHeight = canvas.height / window.devicePixelRatio;
-
-//     const needResize =
-//         canvasPixelWidth !== width || canvasPixelHeight !== height;
-//     if (needResize) {
-//         renderer.setSize(width, height, false);
-//     }
-//     return needResize;
-// }
-
 export function moveJoint(mouse, joint, degreeLimit) {
     let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit);
     joint.rotation.y = THREE.Math.degToRad(degrees.x);
