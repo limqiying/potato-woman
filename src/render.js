@@ -89,7 +89,7 @@ export function init() {
 
     let geometry = new THREE.SphereGeometry(5, 32, 32);
     let material = new THREE.MeshBasicMaterial({
-        color: 0x9bffaf
+        color: "#3ffcc7"
     }); // 0xf2ce2e 
     let sphere = new THREE.Mesh(geometry, material);
     sphere.position.z = -15;
