@@ -23,12 +23,12 @@ document.addEventListener('mousemove', function (e) {
     }
 });
 
-document.addEventListener('mousedown', e => {
+document.addEventListener('pointerdown', e => {
     var mousecoords = getMousePos(e);
     setLeftOrRight(mousecoords.x);
 });
 
-document.addEventListener('mouseup', _ => {
+document.addEventListener('pointerup', _ => {
     setLeftOrRight(-1.0);
 })
 
