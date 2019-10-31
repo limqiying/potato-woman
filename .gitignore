@@ -6,6 +6,7 @@
 /benchmark/fixtures
 /examples/**/dist
 /coverage
+/dist/
 .DS_Store
 *.log
 .idea
@@ -13,3 +14,5 @@
 .cache
 .eslintcache
 package-lock.json
+node_modules
+.vscodedist/
