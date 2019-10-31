@@ -21,7 +21,7 @@ export {
 };
 
 export function init() {
-    const MODEL_PATH = './assets/gigiGLTF.glb';
+    const MODEL_PATH = './assets/models/gigiGLTF.glb';
 
     const canvas = document.querySelector('#c');
     const backgroundColor = 0xf1f1f1;
