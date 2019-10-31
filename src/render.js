@@ -60,6 +60,12 @@ export function init() {
             model.position.y = -11;
             model.scale.set(0.05, 0.05, 0.05);
             scene.add(model);
+
+            mixer = new THREE.AnimationMixer(model);
+            let idleAnim = fileAnimations[0];
+            console.log(idleAnim);
+            idle = mixer.clipAction(idleAnim);
+            idle.play();
         },
         undefined, // We don't need this function
         function (error) {
@@ -113,6 +119,10 @@ export function init() {
 };
 
 export function update() {
+
+    if (mixer) {
+        mixer.update(clock.getDelta());
+    }
 
     if (resizeRendererToDisplaySize(renderer)) {
         const canvas = renderer.domElement;
