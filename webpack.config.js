@@ -1,17 +1,15 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/app.js',
     output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: "Potato Woman",
+        }),
+    ],
 };
-
-module: {
-    rules: [{
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: ["eslint-loader"]
-    }]
-}
