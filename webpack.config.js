@@ -10,7 +10,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Potato Woman",
+            title: "Potato Woman 🍅",
         }),
         new FaviconsWebpackPlugin({
             logo: './logo.png',
