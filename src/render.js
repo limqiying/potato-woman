@@ -21,7 +21,7 @@ export {
 };
 
 export function init() {
-    const MODEL_PATH = './assets/models/gigiGLTF.glb';
+    const MODEL_PATH = './assets/models/gess.glb';
 
     const canvas = document.querySelector('#c');
     const backgroundColor = 0xf1f1f1;
@@ -46,7 +46,7 @@ export function init() {
     camera = new THREE.PerspectiveCamera(
         50,
         window.innerWidth / window.innerHeight,
-        0.1,
+        7.0,
         1000
     );
     camera.position.z = 30
@@ -74,11 +74,11 @@ export function init() {
                 }
             });
             model.position.y = -11;
-            model.scale.set(80, 80, 80);
+            model.scale.set(7.0, 7.0, 7.0);
             scene.add(model);
 
             mixer = new THREE.AnimationMixer(model);
-            let idleAnim = fileAnimations[0];
+            let idleAnim = fileAnimations[1];
             idleAnim.tracks.splice(3, 12);
             idle = mixer.clipAction(idleAnim);
             idle.play();
@@ -111,7 +111,7 @@ export function init() {
     dirLight.position.set(-8, 12, 8);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
-    dirLight.shadow.camera.near = 0.1;
+    dirLight.shadow.camera.near = 7.0;
     dirLight.shadow.camera.far = 1500;
     dirLight.shadow.camera.left = d * -1;
     dirLight.shadow.camera.right = d;
