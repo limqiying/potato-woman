@@ -143,7 +143,11 @@ export function update() {
     if (mixer) {
         mixer.update(clock.getDelta());
     }
-    walkGigi();
+    if (model) {
+        rotateGigi();
+        walkGigi();
+    }
+
     renderer.render(scene, camera);
     requestAnimationFrame(update);
 }
@@ -176,19 +180,10 @@ export function setLeftOrRight(x) {
     leftOrRight = direction == "left" ? -1 : direction == "right" ? 1 : 0;
 }
 
-function playWalkingAnimation(from, fSpeed, to, tSpeed) {
-    to.setLoop(THREE.LoopOnce);
-    to.reset();
-    to.play();
-    from.crossFadeTo(to, fSpeed, true);
-    setTimeout(function () {
-        from.enabled = true;
-        to.crossFadeTo(from, tSpeed, true);
-    }, to._clip.duration * 1000 - ((tSpeed + fSpeed) * 1000));
+function rotateGigi() {
 }
 
 function walkGigi() {
-    if (model) {
         model.position.x += leftOrRight * 0.1;
         if (leftOrRight != 0) {
             walk.setLoop(THREE.LoopRepeat);
@@ -198,7 +193,6 @@ function walkGigi() {
             idle.play();
             walk.stop();
         }
-    }
 }
 
 function getMouseDegrees(x, y, degreeLimit) {
